@@ -1,15 +1,66 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif,
-    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-sans:
+    "Inter", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
-html,
-body {
-  @apply bg-white dark:bg-gray-950;
+.export-csv-button {
+  @apply px-3 py-2 bg-yellow-400 text-slate-900 rounded-lg font-medium shadow-sm hover:brightness-95;
+}
 
-  @media (prefers-color-scheme: dark) {
-    color-scheme: dark;
+.pokeball-intro {
+  animation: pokeballIntro 2s ease-out forwards;
+}
+
+.intro-fade {
+  animation: introFade 2.5s ease-out forwards;
+}
+
+.fade-into {
+  animation: fadeInto 1.5s ease-out forwards;
+}
+
+.card-shadow {
+  box-shadow: 0 6px 18px rgba(18, 24, 33, 0.06);
+}
+
+@keyframes pokeballIntro {
+  0% {
+    transform: scale(0) rotate(0deg);
+    opacity: 0;
+  }
+  40% {
+    transform: scale(1.15) rotate(360deg);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(0.5) translateX(-400px);
+  }
+  70% {
+    transform: scale(1.5) translateX(1000px);
+  }
+  100% {
+    transform: scale(1.5) translateX(1000px);
+  }
+}
+
+@keyframes fadeInto {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes introFade {
+  0%,
+  70% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
   }
 }
