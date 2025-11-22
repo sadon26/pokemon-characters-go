@@ -24,11 +24,19 @@ ul.react-paginate {
 .bg-button-red {
   @apply bg-red-500 text-white font-semibold hover:brightness-95;
 }
+
 ul.react-paginate li a {
   @apply py-1;
 }
+
+@media screen and (max-width: 740px) {
+  ul.react-paginate li a {
+    @apply px-2 text-xs;
+  }
+}
+
 ul.react-paginate li.selected a {
-  @apply bg-red-500;
+  @apply bg-yellow-400 text-slate-900 font-bold;
 }
 
 .pokeball-intro {
