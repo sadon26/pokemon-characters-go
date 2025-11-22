@@ -10,6 +10,27 @@
   @apply px-3 py-2 bg-yellow-400 text-slate-900 rounded-lg font-medium shadow-sm hover:brightness-95;
 }
 
+.back-btn {
+  @apply text-xs !text-green-800 !py-1 !h-8 border border-green-800;
+}
+
+ul.react-paginate {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 0;
+}
+
+.bg-button-red {
+  @apply bg-red-500 text-white font-semibold hover:brightness-95;
+}
+ul.react-paginate li a {
+  @apply py-1;
+}
+ul.react-paginate li.selected a {
+  @apply bg-red-500;
+}
+
 .pokeball-intro {
   animation: pokeballIntro 2s ease-out forwards;
 }
@@ -24,6 +45,10 @@
 
 .card-shadow {
   box-shadow: 0 6px 18px rgba(18, 24, 33, 0.06);
+}
+
+.bg-red {
+  background: rgb(223, 0, 100);
 }
 
 @keyframes pokeballIntro {

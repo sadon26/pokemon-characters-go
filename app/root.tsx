@@ -6,6 +6,7 @@ import {
   Scripts,
   ScrollRestoration,
 } from "react-router";
+import "react-paginate/theme/basic/react-paginate.css";
 
 import type { Route } from "./+types/root";
 import "./app.css";

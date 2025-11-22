@@ -8,7 +8,8 @@ type TParams = Record<string, unknown>;
 type TResponse = { data: TData };
 
 type API = {
-  getPokemons: (url: string, params: TParams) => Promise<TData>;
+  getPokemons: (params: TParams) => Promise<TData>;
+  getPokemon: (id: string, params?: TParams) => Promise<TData>;
 };
 
 const useAxios = () => {
@@ -36,9 +37,13 @@ const useAxios = () => {
   };
 
   const API: API = {
-    getPokemons: async (url: string, params: TParams) =>
+    getPokemons: async (params: TParams) =>
       (await fetchData(
-        () => apis.getPokemons(url, params) as Promise<TResponse>
+        () => apis.getPokemons("pokemon", params) as Promise<TResponse>
+      )) as TData,
+    getPokemon: async (id: string, params?: TParams) =>
+      (await fetchData(
+        () => apis.getPokemon(`pokemon/${id}`, params) as Promise<TResponse>
       )) as TData,
   };
 

@@ -2,13 +2,14 @@ import { useState } from "react";
 
 export type Key = keyof typeof localKeys;
 
-export const localKeys: { [k: string]: string } = {
-  view: "view",
-};
-
 const initialValue = {
   view: "grid",
+  caughtPokemons: [],
 };
+
+export const localKeys: { [k: string]: string } = Object.keys(
+  initialValue
+).reduce((acc, curr) => ({ ...acc, [curr]: curr }), {});
 
 const useLocalStore = <T>() => {
   const [storedValue, setStoredValue] = useState<T>(() => {
@@ -26,15 +27,13 @@ const useLocalStore = <T>() => {
   });
 
   const setValue = (key: Key, value: unknown) => {
-    console.log(storedValue, "<><>stored");
-
     try {
-      const newItem = { ...storedValue };
-      newItem[localKeys[key]] = value;
-
       if (typeof window !== "undefined") {
-        window.localStorage.setItem("global", JSON.stringify(newItem));
-        setStoredValue(newItem);
+        setStoredValue((prevData) => {
+          const newData = { ...prevData, [localKeys[key]]: value };
+          window.localStorage.setItem("global", JSON.stringify(newData));
+          return newData;
+        });
       }
     } catch (error) {
       console.warn(`Error setting localStorage key "${key}":`, error);

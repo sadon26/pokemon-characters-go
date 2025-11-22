@@ -4,3 +4,8 @@ export { default as CaughtPokemons } from "./CaughtPokemons";
 export { default as ViewSwitcher } from "./ViewSwitcher";
 export { default as IntroWrapper } from "./IntroWrapper";
 export { default as PokemonList } from "./UI/PokemonList";
+export { default as PokemonNote } from "./UI/PokemonNote";
+export * from "./UI/PokemonList";
+export { default as ErrorPage } from "./UI/ErrorPage";
+export { default as PageLoader } from "./UI/PageLoader";
+export { default as Modal } from "./Modal";
