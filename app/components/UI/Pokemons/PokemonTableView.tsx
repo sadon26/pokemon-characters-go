@@ -70,6 +70,8 @@ const PokemonTableView: FC<Pokemons> = ({
           breakLabel="..."
           onPageChange={handlePageClick}
           pageRangeDisplayed={3}
+          previousLabel="←"
+          nextLabel="→"
           pageCount={
             Math.ceil(pokemons?.count / (params?.limit as number)) ?? 0
           }

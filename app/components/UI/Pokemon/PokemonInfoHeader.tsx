@@ -1,5 +1,5 @@
 import type { FC } from "react";
-import { PokemonLogo } from "~/assets";
+import { PlaceholderImg, PokemonLogo } from "~/assets";
 import type { PokemonProps } from "~/routes/Pokemon";
 
 const PokemonInfoHeader: FC<PokemonProps> = ({ pokemon }) => (
@@ -28,7 +28,10 @@ const PokemonInfoHeader: FC<PokemonProps> = ({ pokemon }) => (
     {/* Artwork */}
     <div className="w-44 h-44 sm:w-56 sm:h-56 rounded-lg bg-white/80 flex items-center justify-center shadow-lg">
       <img
-        src={pokemon?.sprites?.other?.["official-artwork"]?.front_default}
+        src={
+          pokemon?.sprites?.other?.["official-artwork"]?.front_default ??
+          PlaceholderImg
+        }
         alt={`artwork`}
         className="max-w-full max-h-full object-contain"
         loading="eager"

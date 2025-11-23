@@ -35,20 +35,16 @@ const Header = () => {
     <nav className="py-6 flex justify-between">
       <button
         className="flex items-center gap-2 cursor-pointer"
-        onClick={() =>
-          navigate(POKEMONS_URL, {
-            state: { from: POKEMONS_URL },
-          })
-        }
+        onClick={() => navigate(POKEMONS_URL)}
       >
-        <div className="rounded-full w-10 h-10">
+        <div className="rounded-full w-6 h-6 md:w-10 md:h-10">
           <img
             src={PikachuEatingGif}
             alt="logo"
             className="w-full h-full object-cover ring-2 ring-white shadow-sm"
           />
         </div>
-        <h1 className="font-bold text-2xl">Pokémon</h1>
+        <h1 className="font-bold text-sm md:text-2xl">Pokémon</h1>
       </button>
 
       <div className="flex items-center gap-2">

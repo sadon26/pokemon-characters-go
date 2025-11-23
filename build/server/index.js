@@ -337,6 +337,7 @@ const SortDownIcon = "data:image/svg+xml,%3c?xml%20version='1.0'%20encoding='utf
 const PikachuError = "/assets/pikachu-error-CQ68i-xk.gif";
 const PikachuEatingGif = "/assets/pokemon-eating-CcVB0vC3.gif";
 const NoCaughtPokemonsGif = "/assets/no-caught-pokemons-CD8occn7.gif";
+const PlaceholderImg = "/assets/placeholder-B7_SX9U9.jpg";
 const POKEMON_URL = (id) => `/pokemons/${id}`;
 const POKEMONS_URL = "/";
 const POKEMONS_CAUGHT_URL = "/pokedex";
@@ -360,11 +361,9 @@ const Header = () => {
       "button",
       {
         className: "flex items-center gap-2 cursor-pointer",
-        onClick: () => navigate(POKEMONS_URL, {
-          state: { from: POKEMONS_URL }
-        }),
+        onClick: () => navigate(POKEMONS_URL),
         children: [
-          /* @__PURE__ */ jsx("div", { className: "rounded-full w-10 h-10", children: /* @__PURE__ */ jsx(
+          /* @__PURE__ */ jsx("div", { className: "rounded-full w-6 h-6 md:w-10 md:h-10", children: /* @__PURE__ */ jsx(
             "img",
             {
               src: PikachuEatingGif,
@@ -372,7 +371,7 @@ const Header = () => {
               className: "w-full h-full object-cover ring-2 ring-white shadow-sm"
             }
           ) }),
-          /* @__PURE__ */ jsx("h1", { className: "font-bold text-2xl", children: "Pokémon" })
+          /* @__PURE__ */ jsx("h1", { className: "font-bold text-sm md:text-2xl", children: "Pokémon" })
         ]
       }
     ),
@@ -416,7 +415,7 @@ const CaughtPokemons = () => {
     Button,
     {
       className: [
-        "inline-flex items-center gap-2 card-shadow",
+        "inline-flex items-center gap-2 card-shadow p-1! md:px-3! md:py-2!",
         pathname === POKEMONS_CAUGHT_URL ? "border border-green-800" : ""
       ].join(" "),
       onClick: () => navigate(POKEMONS_CAUGHT_URL),
@@ -425,7 +424,7 @@ const CaughtPokemons = () => {
           "span",
           {
             id: "caughtCount",
-            className: "px-3 py-1 rounded-full bg-green-100 text-green-800 font-semibold",
+            className: "px-3 py-1 rounded-full bg-green-100 text-green-800 font-semibold text-xs md:text-sm",
             children: store.caughtPokemons?.length
           }
         ),
@@ -433,7 +432,7 @@ const CaughtPokemons = () => {
           "span",
           {
             className: [
-              "text-sm text-slate-600 font-normal",
+              "text-xs md:text-sm text-slate-600 font-normal",
               pathname === POKEMONS_CAUGHT_URL ? "!font-bold !text-green-800" : ""
             ].join(" "),
             children: "Caught"
@@ -448,7 +447,7 @@ const ViewSwitcher = () => {
   return /* @__PURE__ */ jsx(
     Button,
     {
-      className: "p-2 bg-white rounded-lg card-shadow",
+      className: "p-1! md:p-2! bg-white rounded-lg card-shadow",
       id: "toggleViewBtn",
       "aria-label": "toggle-view-button",
       title: "Toggle grid / table",
@@ -572,6 +571,8 @@ const PokemonTableView = ({
         breakLabel: "...",
         onPageChange: handlePageClick,
         pageRangeDisplayed: 3,
+        previousLabel: "←",
+        nextLabel: "→",
         pageCount: Math.ceil(pokemons?.count / params?.limit) ?? 0,
         renderOnZeroPageCount: null
       }
@@ -624,7 +625,9 @@ const PokemonGridView = ({
         breakLabel: "...",
         forcePage: params?.offset / params?.limit,
         onPageChange: handlePageClick,
-        pageRangeDisplayed: 5,
+        pageRangeDisplayed: 3,
+        previousLabel: "←",
+        nextLabel: "→",
         pageCount: Math.ceil(pokemons?.count / params?.limit) ?? 0,
         renderOnZeroPageCount: null
       }
@@ -696,7 +699,7 @@ const PokemonInfoHeader = ({ pokemon }) => /* @__PURE__ */ jsxs("header", { clas
   /* @__PURE__ */ jsx("div", { className: "w-44 h-44 sm:w-56 sm:h-56 rounded-lg bg-white/80 flex items-center justify-center shadow-lg", children: /* @__PURE__ */ jsx(
     "img",
     {
-      src: pokemon?.sprites?.other?.["official-artwork"]?.front_default,
+      src: pokemon?.sprites?.other?.["official-artwork"]?.front_default ?? PlaceholderImg,
       alt: `artwork`,
       className: "max-w-full max-h-full object-contain",
       loading: "eager",
@@ -1357,7 +1360,7 @@ const route3 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProper
   __proto__: null,
   default: index
 }, Symbol.toStringTag, { value: "Module" }));
-const serverManifest = { "entry": { "module": "/assets/entry.client-C4N0Lf1m.js", "imports": ["/assets/chunk-4WY6JWTD-C6HYQV7D.js", "/assets/index-DcSJJRlm.js"], "css": [] }, "routes": { "root": { "id": "root", "parentId": void 0, "path": "", "index": void 0, "caseSensitive": void 0, "hasAction": false, "hasLoader": false, "hasClientAction": false, "hasClientLoader": false, "hasClientMiddleware": false, "hasErrorBoundary": true, "module": "/assets/root-C3_2DObH.js", "imports": ["/assets/chunk-4WY6JWTD-C6HYQV7D.js", "/assets/index-DcSJJRlm.js", "/assets/LocalStore-CoLjZkaN.js"], "css": ["/assets/root-DWbxXL_f.css"], "clientActionModule": void 0, "clientLoaderModule": void 0, "clientMiddlewareModule": void 0, "hydrateFallbackModule": void 0 }, "routes/Pokemons/index": { "id": "routes/Pokemons/index", "parentId": "root", "path": void 0, "index": true, "caseSensitive": void 0, "hasAction": false, "hasLoader": false, "hasClientAction": false, "hasClientLoader": false, "hasClientMiddleware": false, "hasErrorBoundary": false, "module": "/assets/index-B3iF_ar8.js", "imports": ["/assets/chunk-4WY6JWTD-C6HYQV7D.js", "/assets/LocalStore-CoLjZkaN.js", "/assets/useUpdatePokemons-CqyFS8qT.js", "/assets/HomeLayout-DW3bujaU.js", "/assets/index-DcSJJRlm.js", "/assets/proxy-ChNXyaPz.js"], "css": [], "clientActionModule": void 0, "clientLoaderModule": void 0, "clientMiddlewareModule": void 0, "hydrateFallbackModule": void 0 }, "routes/Pokemon/index": { "id": "routes/Pokemon/index", "parentId": "root", "path": "/pokemons/:id", "index": void 0, "caseSensitive": void 0, "hasAction": false, "hasLoader": false, "hasClientAction": false, "hasClientLoader": false, "hasClientMiddleware": false, "hasErrorBoundary": false, "module": "/assets/index-RNhx-9Ri.js", "imports": ["/assets/chunk-4WY6JWTD-C6HYQV7D.js", "/assets/HomeLayout-DW3bujaU.js", "/assets/LocalStore-CoLjZkaN.js", "/assets/useUpdatePokemons-CqyFS8qT.js", "/assets/index-zNUrgq7u.js", "/assets/index-DcSJJRlm.js"], "css": [], "clientActionModule": void 0, "clientLoaderModule": void 0, "clientMiddlewareModule": void 0, "hydrateFallbackModule": void 0 }, "routes/Pokedex/index": { "id": "routes/Pokedex/index", "parentId": "root", "path": "/pokedex", "index": void 0, "caseSensitive": void 0, "hasAction": false, "hasLoader": false, "hasClientAction": false, "hasClientLoader": false, "hasClientMiddleware": false, "hasErrorBoundary": false, "module": "/assets/index-D98H6XAq.js", "imports": ["/assets/chunk-4WY6JWTD-C6HYQV7D.js", "/assets/LocalStore-CoLjZkaN.js", "/assets/HomeLayout-DW3bujaU.js", "/assets/index-DcSJJRlm.js", "/assets/proxy-ChNXyaPz.js", "/assets/index-zNUrgq7u.js"], "css": [], "clientActionModule": void 0, "clientLoaderModule": void 0, "clientMiddlewareModule": void 0, "hydrateFallbackModule": void 0 } }, "url": "/assets/manifest-15c35de6.js", "version": "15c35de6", "sri": void 0 };
+const serverManifest = { "entry": { "module": "/assets/entry.client-C4N0Lf1m.js", "imports": ["/assets/chunk-4WY6JWTD-C6HYQV7D.js", "/assets/index-DcSJJRlm.js"], "css": [] }, "routes": { "root": { "id": "root", "parentId": void 0, "path": "", "index": void 0, "caseSensitive": void 0, "hasAction": false, "hasLoader": false, "hasClientAction": false, "hasClientLoader": false, "hasClientMiddleware": false, "hasErrorBoundary": true, "module": "/assets/root-CUb-oo55.js", "imports": ["/assets/chunk-4WY6JWTD-C6HYQV7D.js", "/assets/index-DcSJJRlm.js", "/assets/LocalStore-CoLjZkaN.js"], "css": ["/assets/root-CZK_poUA.css"], "clientActionModule": void 0, "clientLoaderModule": void 0, "clientMiddlewareModule": void 0, "hydrateFallbackModule": void 0 }, "routes/Pokemons/index": { "id": "routes/Pokemons/index", "parentId": "root", "path": void 0, "index": true, "caseSensitive": void 0, "hasAction": false, "hasLoader": false, "hasClientAction": false, "hasClientLoader": false, "hasClientMiddleware": false, "hasErrorBoundary": false, "module": "/assets/index-DJsdygI6.js", "imports": ["/assets/chunk-4WY6JWTD-C6HYQV7D.js", "/assets/LocalStore-CoLjZkaN.js", "/assets/useUpdatePokemons-CqyFS8qT.js", "/assets/HomeLayout-CblElA1v.js", "/assets/index-DcSJJRlm.js", "/assets/proxy-ChNXyaPz.js"], "css": [], "clientActionModule": void 0, "clientLoaderModule": void 0, "clientMiddlewareModule": void 0, "hydrateFallbackModule": void 0 }, "routes/Pokemon/index": { "id": "routes/Pokemon/index", "parentId": "root", "path": "/pokemons/:id", "index": void 0, "caseSensitive": void 0, "hasAction": false, "hasLoader": false, "hasClientAction": false, "hasClientLoader": false, "hasClientMiddleware": false, "hasErrorBoundary": false, "module": "/assets/index-us8nZ7IY.js", "imports": ["/assets/chunk-4WY6JWTD-C6HYQV7D.js", "/assets/HomeLayout-CblElA1v.js", "/assets/LocalStore-CoLjZkaN.js", "/assets/useUpdatePokemons-CqyFS8qT.js", "/assets/index-zNUrgq7u.js", "/assets/index-DcSJJRlm.js"], "css": [], "clientActionModule": void 0, "clientLoaderModule": void 0, "clientMiddlewareModule": void 0, "hydrateFallbackModule": void 0 }, "routes/Pokedex/index": { "id": "routes/Pokedex/index", "parentId": "root", "path": "/pokedex", "index": void 0, "caseSensitive": void 0, "hasAction": false, "hasLoader": false, "hasClientAction": false, "hasClientLoader": false, "hasClientMiddleware": false, "hasErrorBoundary": false, "module": "/assets/index-J1mAlWJd.js", "imports": ["/assets/chunk-4WY6JWTD-C6HYQV7D.js", "/assets/LocalStore-CoLjZkaN.js", "/assets/HomeLayout-CblElA1v.js", "/assets/index-DcSJJRlm.js", "/assets/proxy-ChNXyaPz.js", "/assets/index-zNUrgq7u.js"], "css": [], "clientActionModule": void 0, "clientLoaderModule": void 0, "clientMiddlewareModule": void 0, "hydrateFallbackModule": void 0 } }, "url": "/assets/manifest-5da96725.js", "version": "5da96725", "sri": void 0 };
 const assetsBuildDirectory = "build/client";
 const basename = "/";
 const future = { "v8_middleware": false, "unstable_optimizeDeps": false, "unstable_splitRouteModules": false, "unstable_subResourceIntegrity": false, "unstable_viteEnvironmentApi": false };

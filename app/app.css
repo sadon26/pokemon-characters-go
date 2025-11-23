@@ -14,7 +14,7 @@
 }
 
 .export-csv-button {
-  @apply px-3 py-2 bg-yellow-400 text-slate-900 rounded-lg font-medium shadow-sm hover:brightness-95;
+  @apply px-2 py-1 md:px-3 md:py-2 bg-yellow-400 text-slate-900 rounded-lg font-medium shadow-sm hover:brightness-95 text-xs md:text-sm;
 }
 
 .back-btn {

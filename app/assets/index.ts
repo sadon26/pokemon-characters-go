@@ -7,3 +7,4 @@ export { default as SortDownIcon } from "./svgs/sort-amount-down.svg";
 export { default as PikachuError } from "./gifs/pikachu-error.gif";
 export { default as PikachuEatingGif } from "./gifs/pokemon-eating.gif";
 export { default as NoCaughtPokemonsGif } from "./gifs/no-caught-pokemons.gif";
+export { default as PlaceholderImg } from "./img/placeholder.jpg";

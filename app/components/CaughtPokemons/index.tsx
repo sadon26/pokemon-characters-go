@@ -12,20 +12,20 @@ const CaughtPokemons: FC = () => {
   return (
     <Button
       className={[
-        "inline-flex items-center gap-2 card-shadow",
+        "inline-flex items-center gap-2 card-shadow p-1! md:px-3! md:py-2!",
         pathname === POKEMONS_CAUGHT_URL ? "border border-green-800" : "",
       ].join(" ")}
       onClick={() => navigate(POKEMONS_CAUGHT_URL)}
     >
       <span
         id="caughtCount"
-        className="px-3 py-1 rounded-full bg-green-100 text-green-800 font-semibold"
+        className="px-3 py-1 rounded-full bg-green-100 text-green-800 font-semibold text-xs md:text-sm"
       >
         {store.caughtPokemons?.length}
       </span>
       <span
         className={[
-          "text-sm text-slate-600 font-normal",
+          "text-xs md:text-sm text-slate-600 font-normal",
           pathname === POKEMONS_CAUGHT_URL ? "!font-bold !text-green-800" : "",
         ].join(" ")}
       >

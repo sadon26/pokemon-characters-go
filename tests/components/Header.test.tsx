@@ -54,9 +54,7 @@ describe("Header component", () => {
     const button = screen.getByRole("button", { name: /pokémon/i });
     fireEvent.click(button);
 
-    expect(mockNavigate).toHaveBeenCalledWith(POKEMONS_URL, {
-      state: { from: POKEMONS_URL },
-    });
+    expect(mockNavigate).toHaveBeenCalledWith(POKEMONS_URL);
   });
 
   it("calls exportAsCSV with formatted pokemons when Export CSV button is clicked", () => {

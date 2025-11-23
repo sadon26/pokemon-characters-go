@@ -8,7 +8,7 @@ const ViewSwitcher = () => {
 
   return (
     <Button
-      className="p-2 bg-white rounded-lg card-shadow"
+      className="p-1! md:p-2! bg-white rounded-lg card-shadow"
       id="toggleViewBtn"
       aria-label="toggle-view-button"
       title="Toggle grid / table"
