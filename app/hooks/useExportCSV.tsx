@@ -1,16 +1,11 @@
+import type { FormattedPokemons } from "~/components/Header";
+
 const useExportCSV = () => {
   const exportAsCSV = ({
     pokemons,
     link,
   }: {
-    pokemons: {
-      id: string;
-      name: string;
-      types: string;
-      height: string;
-      weight: string;
-      timestamp: string;
-    }[];
+    pokemons: FormattedPokemons[];
     link: string;
   }) => {
     const rows = [...(pokemons ?? [])];
@@ -18,14 +13,23 @@ const useExportCSV = () => {
       alert("Catch your Pokémons to export");
       return;
     }
-    const headers = ["id", "name", "types", "height", "weight", "timestamp"];
+    const headers = [
+      "id",
+      "name",
+      "types",
+      "height",
+      "weight",
+      "timestamp",
+    ] as const;
     const csv = [headers.join(",")]
       .concat(
         rows.map((r) =>
           headers
             .map((h) => {
               // simple CSV escaping
-              const v = (r[h] ?? "").toString().replace(/"/g, '""');
+              const v = (r[h as keyof typeof r] ?? "")
+                .toString()
+                .replace(/"/g, '""');
               return `"${v}"`;
             })
             .join(",")

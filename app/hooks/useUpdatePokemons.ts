@@ -1,16 +1,16 @@
 import { useCallback } from "react";
-import type { PokemonResult } from "~/components/UI/PokemonList";
 import { useLocalStoreContext } from "~/contexts";
 import { localKeys } from "./useLocalStore";
+import type { PokemonProps } from "~/routes/Pokemon";
 
 const useUpdatePokemons = () => {
   const [store, setStore] = useLocalStoreContext();
 
-  const hasCaughtPokemon = (pokemon: PokemonResult) =>
+  const hasCaughtPokemon = (pokemon: PokemonProps["pokemon"]) =>
     !!store?.caughtPokemons?.find((p) => p.name === pokemon?.name);
 
   const catchPokemon = useCallback(
-    (pokemon: PokemonResult) => {
+    (pokemon: PokemonProps["pokemon"]) => {
       const foundPokemon = store?.caughtPokemons?.find(
         (p) => p.name === pokemon.name
       );
@@ -32,13 +32,13 @@ const useUpdatePokemons = () => {
   );
 
   const removePokemon = useCallback(
-    (pokemon: PokemonResult) => {
+    (pokemon: PokemonProps["pokemon"]) => {
       const foundPokemonIndex = store?.caughtPokemons?.findIndex(
         (p) => p.name === pokemon.name
       );
 
       const caughtPokemons = [...(store?.caughtPokemons ?? [])];
-      caughtPokemons.splice(foundPokemonIndex, 1);
+      caughtPokemons.splice(foundPokemonIndex as number, 1);
 
       setStore(localKeys.caughtPokemons, caughtPokemons);
     },

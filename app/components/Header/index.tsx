@@ -1,10 +1,18 @@
-import { PokemonLogo } from "~/assets";
+import { PikachuEatingGif } from "~/assets";
 import { Button, CaughtPokemons, ViewSwitcher } from "../index";
 import { useLocation, useNavigate } from "react-router";
 import { POKEMONS_URL } from "~/services/paths";
 import { useLocalStoreContext } from "~/contexts";
-import { useEffect } from "react";
 import { useExportCSV } from "~/hooks";
+import type { PokemonProps } from "~/routes/Pokemon";
+
+export type FormattedPokemons =
+  | Omit<PokemonProps["pokemon"], "height" | "weight">
+  | {
+      types: string | undefined;
+      height: string;
+      weight: string;
+    };
 
 const Header = () => {
   const navigate = useNavigate();
@@ -12,16 +20,16 @@ const Header = () => {
   const [store] = useLocalStoreContext();
   const { exportAsCSV } = useExportCSV();
 
-  const formattedPokemons = store?.caughtPokemons?.map((p) => ({
-    id: p.id,
-    name: p.name,
-    types: p?.types
-      ?.map(({ type }: { type: { name: string } }) => type.name)
-      ?.join(", "),
-    height: `${p.height * 10}cm`,
-    weight: `${p.weight / 10}kg`,
-    timestamp: p?.timestamp,
-  }));
+  const formattedPokemons = store?.caughtPokemons?.map(
+    (p): FormattedPokemons => ({
+      id: p.id,
+      name: p.name,
+      types: p?.types?.map(({ type }) => type.name)?.join(", "),
+      height: `${p.height * 10}cm`,
+      weight: `${p.weight / 10}kg`,
+      timestamp: p?.timestamp,
+    })
+  ) as FormattedPokemons[];
 
   return (
     <nav className="py-6 flex justify-between">
@@ -33,9 +41,9 @@ const Header = () => {
           })
         }
       >
-        <div className="rounded-full w-10 h-10 animate-spin">
+        <div className="rounded-full w-10 h-10">
           <img
-            src={PokemonLogo}
+            src={PikachuEatingGif}
             alt="logo"
             className="w-full h-full object-cover ring-2 ring-white shadow-sm"
           />

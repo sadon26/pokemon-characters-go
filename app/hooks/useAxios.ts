@@ -1,7 +1,7 @@
 import * as apis from "../services/apis";
 import { useState } from "react";
 
-type TData = unknown;
+type TData = any;
 
 type TParams = Record<string, unknown>;
 
@@ -14,12 +14,12 @@ type API = {
 
 const useAxios = () => {
   const [loading, setLoading] = useState(false);
-  const [data, setData] = useState<TData | null>(null);
+  const [data, setData] = useState<TData>();
   const [error, setError] = useState<boolean | unknown>(false);
 
   const fetchData = async (
     apiCall: () => Promise<TResponse>
-  ): Promise<TData | undefined> => {
+  ): Promise<TData> => {
     setLoading(true);
     setError(false);
     try {
@@ -29,8 +29,7 @@ const useAxios = () => {
     } catch (error) {
       setError(true);
       console.error("Error fetching data:", error);
-
-      return undefined;
+      throw error;
     } finally {
       setLoading(false);
     }

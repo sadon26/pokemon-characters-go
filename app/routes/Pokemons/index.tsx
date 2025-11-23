@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import { useLocation } from "react-router";
 import { IntroWrapper, PokemonList, type PaginateProps } from "~/components";
+import { useLocalStoreContext } from "~/contexts";
 import { useAxios } from "~/hooks";
+import { localKeys } from "~/hooks/useLocalStore";
 import { HomeLayout } from "~/layouts";
-import { POKEMONS_URL } from "~/services/paths";
 
 export type Route = {
   MetaArgs: Record<string, unknown>;
@@ -19,7 +19,6 @@ export function meta({}: Route["MetaArgs"]) {
 }
 
 export default function Home() {
-  const [loading, setLoading] = useState(true);
   const [pokemonsParams, setPokemonParams] = useState<PokemonParams>({
     limit: 12,
     offset: 0,
@@ -30,7 +29,7 @@ export default function Home() {
     data: pokemonsData,
     API,
   } = useAxios();
-  const { pathname, state } = useLocation();
+  const [store, setStore] = useLocalStoreContext();
 
   const refetchPaginatedPokemons = async ({ selected }: PaginateProps) => {
     const offset = selected * pokemonsParams.limit;
@@ -45,26 +44,23 @@ export default function Home() {
     let timeout: NodeJS.Timeout | undefined;
     API.getPokemons(pokemonsParams);
 
-    if (pathname === "/" && state?.from !== POKEMONS_URL) {
+    if (!store.pageLoaded) {
       timeout = setTimeout(() => {
-        setLoading(false);
+        setStore(localKeys.pageLoaded, true);
       }, 2500);
       return;
     }
-
-    setLoading(false);
 
     return () => {
       clearTimeout(timeout);
     };
   }, []);
 
-  return loading ? (
+  return !store.pageLoaded ? (
     <IntroWrapper />
   ) : (
-    <HomeLayout error={!!errorPokemons}>
+    <HomeLayout loading={loadingPokemon} error={!!errorPokemons}>
       <PokemonList
-        loading={loadingPokemon}
         pokemons={pokemonsData}
         params={pokemonsParams}
         onPaginate={refetchPaginatedPokemons}

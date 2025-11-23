@@ -5,6 +5,7 @@ export type Key = keyof typeof localKeys;
 const initialValue = {
   view: "grid",
   caughtPokemons: [],
+  pageLoaded: false,
 };
 
 export const localKeys: { [k: string]: string } = Object.keys(
