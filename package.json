@@ -10,6 +10,7 @@
     "test": "vitest",
     "test:coverage": "vitest --coverage"
   },
+  "homepage": "/",
   "dependencies": {
     "@react-router/node": "^7.9.2",
     "@react-router/serve": "^7.9.2",
