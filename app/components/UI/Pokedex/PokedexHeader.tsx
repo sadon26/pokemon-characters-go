@@ -33,7 +33,7 @@ const PokedexHeader: FC<Props> = ({
     <div className="flex justify-between items-center mb-4">
       {!!store?.caughtPokemons?.length && (
         <div className="flex flex-col md:flex-row gap-3 justify-between w-full">
-          <h4 className="font-bold text-xs md:text-lg flex items-center gap-1">
+          <h4 className="font-bold text-sm md:text-lg flex items-center gap-1">
             <span>My Pokédex</span>
             <div className="w-8 animate-spin">
               <img src={PokemonLogo} alt="pikachu-eating" className="w-full" />
