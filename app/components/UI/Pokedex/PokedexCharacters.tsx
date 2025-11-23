@@ -107,6 +107,7 @@ const PokedexCharacters: FC<Props> = ({
             </Button>
 
             <Button
+              aria-label="View Pokémon"
               className="bg-white mt-2 border border-green-400 !text-green-700 !text-xs !py-1 !h-8"
               onClick={() => navigate(POKEMON_URL(String(pokemon.id)))}
             >

@@ -22,7 +22,7 @@ const Modal: FC<Props> = ({ children, onClose }) => {
       onClick={onClose}
     >
       <div
-        className="bg-white border-1 border-gray-400/40 rounded-2xl p-8 max-w-2xl mx-4 shadow-3xl text-left backdrop-blur-lg w-full relative"
+        className="bg-white border border-gray-400/40 rounded-2xl p-8 max-w-2xl mx-4 shadow-3xl text-left backdrop-blur-lg w-full relative"
         onClick={(e) => e.stopPropagation()}
       >
         {children}

@@ -53,6 +53,7 @@ const PokedexHeader: FC<Props> = ({
 
             <Button
               title="Sort up/down"
+              aria-label="sort up/down"
               className="border border-gray-300"
               onClick={() =>
                 setSortDirection((prev: SortDirection) =>
@@ -70,7 +71,7 @@ const PokedexHeader: FC<Props> = ({
             </Button>
             {!!selectedPokemons.length && (
               <Button
-                className="border border-green-500 !text-green-800 !font-bold text-xs font-semibold hover:brightness-95 whitespace-nowrap"
+                className="border border-green-500 text-green-800! font-bold! text-xs hover:brightness-95 whitespace-nowrap"
                 onClick={releaseSelectedPokemons}
               >
                 Release {selectedPokemons.length} selected pokémon

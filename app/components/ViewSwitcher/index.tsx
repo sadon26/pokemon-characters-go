@@ -10,6 +10,7 @@ const ViewSwitcher = () => {
     <Button
       className="p-2 bg-white rounded-lg card-shadow"
       id="toggleViewBtn"
+      aria-label="toggle-view-button"
       title="Toggle grid / table"
       onClick={() =>
         setStore(localKeys.view, store.view === "grid" ? "table" : "grid")
@@ -17,6 +18,7 @@ const ViewSwitcher = () => {
     >
       <svg
         id="toggleIcon"
+        data-testid="toggleIcon"
         className="w-5 h-5 text-slate-700"
         viewBox="0 0 24 24"
         fill="none"

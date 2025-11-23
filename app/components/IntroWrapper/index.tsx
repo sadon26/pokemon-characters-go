@@ -4,6 +4,7 @@ const IntroWrapper = () => {
   return (
     <div
       id="intro-screen"
+      data-testid="intro-screen"
       className="fixed inset-0 flex items-center justify-center bg-black intro-fade"
     >
       <div className="w-48 h-48 pokeball-intro">

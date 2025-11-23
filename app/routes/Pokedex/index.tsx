@@ -17,7 +17,7 @@ export type SortOptionsValues = "name" | "height" | "timestamp" | "weight" | "";
 
 export type SortDirection = "asc" | "desc";
 
-const PokemonsCaught = () => {
+const Pokedex = () => {
   const [store, setStore] = useLocalStoreContext();
   const navigate = useNavigate();
   const [selectedPokemons, setSelectedPokemons] = useState<
@@ -185,4 +185,4 @@ const PokemonsCaught = () => {
   );
 };
 
-export default PokemonsCaught;
+export default Pokedex;

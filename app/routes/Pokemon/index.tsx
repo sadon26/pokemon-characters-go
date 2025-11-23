@@ -14,32 +14,32 @@ import { POKEMONS_URL } from "~/services/paths";
 
 export type PokemonProps = {
   pokemon: {
-    url: string;
-    timestamp: string;
-    id: number | string;
-    note: string;
-    name: string;
+    url?: string;
+    timestamp?: string;
+    id?: number | string;
+    note?: string;
+    name?: string;
     types?: {
       type: { name: string };
     }[];
-    sprites: {
-      other: {
+    sprites?: {
+      other?: {
         "official-artwork": {
           front_default: string;
         };
       };
     };
-    order: string;
+    order?: string;
     height: number;
     weight: number;
-    base_experience: number;
-    moves: {
-      name: string;
+    base_experience?: number;
+    moves?: {
+      name?: string;
     }[];
-    abilities: {
+    abilities?: {
       ability: { name: string };
     }[];
-    forms: {
+    forms?: {
       name: string;
     }[];
   };

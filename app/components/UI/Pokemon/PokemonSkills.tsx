@@ -127,10 +127,13 @@ const PokemonSkills: FC<PokemonProps> = ({ pokemon }) => {
   );
 };
 
-type StatBarProps = { value: number; max?: number; ariaLabel?: string };
+type StatBarProps = { value?: number; max?: number; ariaLabel?: string };
 
 const StatBar: FC<StatBarProps> = ({ value, max = 255, ariaLabel }) => {
-  const pct = Math.max(0, Math.min(100, Math.round((value / max) * 100)));
+  const pct = Math.max(
+    0,
+    Math.min(100, Math.round(((value ?? 0) / max) * 100))
+  );
 
   return (
     <div className="w-full">

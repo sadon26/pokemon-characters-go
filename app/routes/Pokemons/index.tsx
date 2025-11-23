@@ -14,7 +14,7 @@ export type PokemonParams = { offset: number; limit: number };
 export function meta({}: Route["MetaArgs"]) {
   return [
     { title: "Pokemon Go App" },
-    { name: "description", content: "Welcome to React Router!" },
+    { name: "description", content: "Welcome to Pokémon Go!" },
   ];
 }
 

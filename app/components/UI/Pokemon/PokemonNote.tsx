@@ -16,9 +16,10 @@ const PokemonNote: FC<Props> = ({ note, onSubmit }) => {
   return (
     <div className="mt-6">
       <label htmlFor="add-note" className="block font-bold">
-        Add Note
+        Add Note:
       </label>
       <textarea
+        aria-label="Pokemon Note"
         className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-300 transition-colors duration-200 shadow-sm text-sm"
         id="add-note !outline-none !min-h-[500px]"
         value={pokemonNote}
@@ -29,6 +30,7 @@ const PokemonNote: FC<Props> = ({ note, onSubmit }) => {
       ></textarea>
       <div className="flex gap-3">
         <Button
+          aria-label="Add Note"
           className="bg-white border text-slate-700 !text-xs !h-8"
           onClick={() => onSubmit(pokemonNote)}
         >
