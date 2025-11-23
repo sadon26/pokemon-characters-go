@@ -32,8 +32,8 @@ const PokedexHeader: FC<Props> = ({
   return (
     <div className="flex justify-between items-center mb-4">
       {!!store?.caughtPokemons?.length && (
-        <div className="flex justify-between w-full">
-          <h4 className="font-bold text-lg flex items-center gap-1">
+        <div className="flex flex-col md:flex-row gap-3 justify-between w-full">
+          <h4 className="font-bold text-xs md:text-lg flex items-center gap-1">
             <span>My Pokédex</span>
             <div className="w-8 animate-spin">
               <img src={PokemonLogo} alt="pikachu-eating" className="w-full" />
@@ -42,7 +42,7 @@ const PokedexHeader: FC<Props> = ({
 
           <div className="flex items-center gap-1">
             <select
-              className="w-full h-full appearance-none p-2 pr-10 border border-gray-300 rounded-lg shadow-sm bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors duration-200 cursor-pointer text-xs"
+              className="max-w-[150px] h-full appearance-none p-2 pr-10 border border-gray-300 rounded-lg shadow-sm bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors duration-200 cursor-pointer text-xs"
               onChange={updateSorting}
             >
               <option value="">Sort</option>
