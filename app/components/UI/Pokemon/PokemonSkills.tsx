@@ -63,7 +63,7 @@ const PokemonSkills: FC<PokemonProps> = ({ pokemon }) => {
           {
             <div className="flex-1">
               <div className="text-sm text-slate-500">Moves</div>
-              <p className="mt-2 text-slate-800 capitalize">
+              <p className="mt-2 text-slate-800 capitalize text-sm">
                 {pokemon?.moves?.length
                   ? pokemon?.moves?.map(({ move }) => move.name).join(", ")
                   : "..."}
@@ -77,7 +77,7 @@ const PokemonSkills: FC<PokemonProps> = ({ pokemon }) => {
           {
             <div className="flex-1">
               <div className="text-sm text-slate-500">Abilities</div>
-              <p className="mt-2 text-slate-800 capitalize">
+              <p className="mt-2 text-slate-800 capitalize text-sm">
                 {pokemon?.abilities?.length
                   ? pokemon?.abilities
                       ?.map(({ ability }) => ability.name)
@@ -93,7 +93,7 @@ const PokemonSkills: FC<PokemonProps> = ({ pokemon }) => {
           {
             <div className="flex-1">
               <div className="text-sm text-slate-500">Forms</div>
-              <p className="mt-2 text-slate-800 capitalize">
+              <p className="mt-2 text-slate-800 capitalize text-sm">
                 {pokemon?.forms?.length
                   ? pokemon?.forms?.map(({ name }) => name).join(", ")
                   : "..."}
@@ -107,9 +107,9 @@ const PokemonSkills: FC<PokemonProps> = ({ pokemon }) => {
           {
             <div className="flex-1">
               <div className="text-sm text-slate-500">Note</div>
-              <div className="mt-2 text-slate-800">
+              <p className="mt-2 text-slate-800 text-sm">
                 {(pokemonCaught?.note || "...") ?? "Add note..."}
-              </div>
+              </p>
             </div>
           }
 

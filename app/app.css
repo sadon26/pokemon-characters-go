@@ -6,6 +6,13 @@
     "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
+.export-safe * {
+  --tw-gradient-from: rgb(255, 255, 255) !important;
+  --tw-gradient-to: rgb(255, 255, 255) !important;
+  --tw-gradient-stops: rgb(255, 255, 255) !important;
+  color: rgb(0, 0, 0) !important;
+}
+
 .export-csv-button {
   @apply px-3 py-2 bg-yellow-400 text-slate-900 rounded-lg font-medium shadow-sm hover:brightness-95;
 }
