@@ -28,6 +28,10 @@ ul.react-paginate {
   padding: 0;
 }
 
+ul.react-paginate li.disabled a {
+  color: rgb(179, 179, 179);
+}
+
 .bg-button-red {
   @apply bg-red-500 text-white font-semibold hover:brightness-95;
 }
