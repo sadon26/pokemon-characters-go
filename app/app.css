@@ -21,6 +21,22 @@
   @apply text-xs !text-green-800 !py-1 !h-8 border border-green-800;
 }
 
+.hide-scrollbar {
+  /* For Firefox */
+  scrollbar-width: none;
+
+  /* For Internet Explorer and Edge (legacy) */
+  -ms-overflow-style: none;
+
+  /* Still allow scrolling */
+  overflow: auto;
+}
+
+/* For Chrome, Safari, and other WebKit browsers */
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
 ul.react-paginate {
   display: flex;
   align-items: center;

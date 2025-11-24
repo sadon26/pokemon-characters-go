@@ -13,15 +13,17 @@ const HomeLayout: FC<Props> = ({
   loading = false,
 }) => {
   return (
-    <div className="max-w-[800px] mx-auto px-6">
+    <div className="max-w-[800px] mx-auto px-6 flex flex-col h-screen">
       <Header />
-      {loading ? (
-        <PageLoader />
-      ) : error ? (
-        <ErrorPage />
-      ) : (
-        <div className="fade-into">{children}</div>
-      )}
+      <div className="grow overflow-y-scroll hide-scrollbar">
+        {loading ? (
+          <PageLoader />
+        ) : error ? (
+          <ErrorPage />
+        ) : (
+          <div className="fade-into">{children}</div>
+        )}
+      </div>
     </div>
   );
 };
